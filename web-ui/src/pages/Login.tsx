@@ -32,11 +32,11 @@ const Login = () => {
               <CardContent className="space-y-2">
                 <div className="space-y-1">
                   <Label htmlFor="name">Name</Label>
-                  <Input id="name" defaultValue="Pedro Duarte" />
+                  <Input id="name" defaultValue="Your Name" />
                 </div>
                 <div className="space-y-1">
-                  <Label htmlFor="username">Username</Label>
-                  <Input id="username" defaultValue="@peduarte" />
+                  <Label htmlFor="walletad">Wallet Address</Label>
+                  <Input id="walletid" defaultValue="Wallet Address" />
                 </div>
               </CardContent>
               <CardFooter>
