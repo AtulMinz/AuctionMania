@@ -1,3 +1,3 @@
-## Plinko
+# Auctionmania
 
-# _Plinko is a casino game based on linera blockchain_
+## _Auctionmania is a gaming assest auction platform_
