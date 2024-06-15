@@ -1,3 +1,3 @@
-# Auctionmania
+# AuctionMania
 
 ## _Auctionmania is a gaming assest auction platform_
