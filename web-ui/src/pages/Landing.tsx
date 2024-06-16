@@ -11,9 +11,15 @@ const Landing = () => {
         alt="AuctionMania"
       />
       <div className="relative flex justify-center items-center h-full flex-col">
-        <span className="">
+        <span>
           <h1 className="font-lobster text-[5rem] font-black">Auction Mania</h1>
         </span>
+        <p className="w-1/2 space-y-2">
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugit omnis
+          quidem quam, delectus minima obcaecati accusantium quis vero possimus
+          illum magnam! Magnam doloremque debitis ipsa et perspiciatis sapiente
+          voluptatem tenetur.
+        </p>
         <div className="space-x-4">
           <Button className="z-10">About</Button>
           <Button
