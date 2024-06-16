@@ -1,6 +1,7 @@
 [package]
-name = "auctionmania"
+name = "my-nft"
 version = "0.1.0"
+authors = ["Linera <contact@linera.io>"]
 edition = "2021"
 
 [dependencies]
@@ -13,18 +14,21 @@ linera-views = { workspace = true }
 serde = { workspace = true, features = ["derive"] }
 serde_json = { workspace = true }
 thiserror = { workspace = true }
+base64 = { workspace = true }
+sha3 = { workspace = true }
 
-[dev-dependencies]
+[target.'cfg(not(target_arch = "wasm32"))'.dev-dependencies]
 linera-sdk = { version = "0.11.3", features = ["test", "wasmer"] }
 linera-service = { version = "0.11.3", features = ["test"] }
+my-nft = { workspace = true, features = ["test"] }
 webassembly-test = "0.1.0"
 
 [[bin]]
-name = "auctionmania_contract"
+name = "my_nft_contract"
 path = "src/contract.rs"
 
 [[bin]]
-name = "auctionmania_service"
+name = "my_nft_service"
 path = "src/service.rs"
 
 [features]
