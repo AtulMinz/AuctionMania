@@ -41,15 +41,27 @@ const Login = () => {
               <CardContent className="space-y-2">
                 <div className="space-y-1">
                   <Label htmlFor="name">Name</Label>
-                  <Input id="name" defaultValue="Your Name" />
+                  <Input id="name" placeholder="Enter Your Name" required />
                 </div>
                 <div className="space-y-1">
-                  <Label htmlFor="walletad">Wallet Address</Label>
-                  <Input id="walletid" defaultValue="Wallet Address" />
+                  <Label htmlFor="walletad">Chain Id*</Label>
+                  <Input id="walletid" placeholder="Enter Chain Id" required />
+                </div>
+                <div className="space-y-1">
+                  <Label htmlFor="walletad">Wallet Address*</Label>
+                  <Input
+                    id="walletid"
+                    placeholder="Enter your wallet address"
+                  />
                 </div>
               </CardContent>
               <CardFooter>
-                <Button className="w-full bg-white">Proceed &rarr;</Button>
+                <Button
+                  className="w-full bg-white"
+                  onClick={() => navigate("/services")}
+                >
+                  Proceed &rarr;
+                </Button>
               </CardFooter>
             </Card>
           </TabsContent>
