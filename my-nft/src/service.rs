@@ -15,8 +15,7 @@ use std::{
 use async_graphql::{EmptySubscription, Object, Request, Response, Schema};
 use base64::engine::{general_purpose::STANDARD_NO_PAD, Engine as _};
 use linera_sdk::{
-    base::{AccountOwner, ChainId, WithServiceAbi},
-    graphql,
+    base::{AccountOwner, WithServiceAbi},
     views::{View, ViewStorageContext},
     Service, ServiceRuntime,
 };
