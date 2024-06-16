@@ -1,26 +1,31 @@
 [package]
-name = "my-nft"
+name = "auctionmania"
 version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-async-graphql = { version = "=7.0.2", default-features = false }
-async-graphql-derive = { version = "=7.0.2", default-features = false }
-linera-sdk = "0.11.3"
+async-graphql = { workspace = true, default-features = false }
+async-trait = { workspace = true }
+bcs = { workspace = true }
+futures = { workspace = true }
+linera-sdk = { workspace = true }
+linera-views = { workspace = true }
+serde = { workspace = true, features = ["derive"] }
+serde_json = { workspace = true }
+thiserror = { workspace = true }
 
 [dev-dependencies]
-linera-sdk = { version = "0.11.3", features = ["test"] }
+linera-sdk = { version = "0.11.3", features = ["test", "wasmer"] }
+linera-service = { version = "0.11.3", features = ["test"] }
+webassembly-test = "0.1.0"
 
 [[bin]]
-name = "my_nft_contract"
+name = "auctionmania_contract"
 path = "src/contract.rs"
 
 [[bin]]
-name = "my_nft_service"
+name = "auctionmania_service"
 path = "src/service.rs"
 
-[profile.release]
-debug = true
-lto = true
-opt-level = 'z'
-strip = 'debuginfo'
+[features]
+test = []

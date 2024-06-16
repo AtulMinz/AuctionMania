@@ -2,35 +2,46 @@
 
 mod state;
 
-use self::state::NonFungibleToken;
+use self::state::Market;
+use async_graphql::{EmptySubscription, Request, Response, Schema};
+use auctionmania::{MarketParameters, Operation};
 use linera_sdk::{
     base::WithServiceAbi,
+    graphql::GraphQLMutationRoot,
     views::{View, ViewStorageContext},
     Service, ServiceRuntime,
 };
+use std::sync::Arc;
 
-pub struct NonFungibleTokenService {
-    state: NonFungibleToken,
-    runtime: ServiceRuntime<Self>,
+pub struct MarketService {
+    state: Arc<Market>,
 }
 
-linera_sdk::service!(NonFungibleTokenService);
+linera_sdk::service!(MarketService);
 
-impl WithServiceAbi for NonFungibleTokenService {
-    type Abi = my_nft::NonFungibleTokenAbi;
+impl WithServiceAbi for MarketService {
+    type Abi = market::MarketAbi;
 }
 
-impl Service for NonFungibleTokenService {
-    type Parameters = ();
+impl Service for MarketService {
+    type Parameters = MarketParameters;
 
     async fn new(runtime: ServiceRuntime<Self>) -> Self {
-        let state = NonFungibleToken::load(ViewStorageContext::from(runtime.key_value_store()))
+        let state = Market::load(ViewStorageContext::from(runtime.key_value_store()))
             .await
             .expect("Failed to load state");
-        NonFungibleTokenService { state, runtime }
+        MarketService {
+            state: Arc::new(state),
+        }
     }
 
-    async fn handle_query(&self, _query: Self::Query) -> Self::QueryResponse {
-        panic!("Queries not supported by application");
+    async fn handle_query(&self, request: Request) -> Response {
+        let schema = Schema::build(
+            self.state.clone(),
+            Operation::mutation_root(),
+            EmptySubscription,
+        )
+        .finish();
+        schema.execute(request).await
     }
 }
