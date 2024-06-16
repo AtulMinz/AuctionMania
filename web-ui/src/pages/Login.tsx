@@ -10,10 +10,19 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
+import { ChevronLeft } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate();
   return (
     <div className="w-full h-screen">
+      <div className="absolute mt-4 p-4">
+        <ChevronLeft
+          className="hover:bg-gray-300 hover:rounded-lg hover:cursor-pointer"
+          onClick={() => navigate("/")}
+        />
+      </div>
       <div className="h-screen flex justify-center items-center">
         <Tabs defaultValue="account" className="w-[400px]">
           <TabsList className="grid w-full grid-cols-2 bg-red-500">
