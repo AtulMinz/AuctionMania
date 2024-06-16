@@ -10,7 +10,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        bg: "#E0E7F1",
+        bg: "#fcd7d7",
         main: "#A3E636",
         mainAccent: "#4d80e6", // not needed for shadcn
       },
