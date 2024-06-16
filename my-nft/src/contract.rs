@@ -8,7 +8,7 @@ mod state;
 use std::collections::BTreeSet;
 
 use linera_sdk::{
-    base::{AccountOwner, ChainId, WithContractAbi},
+    base::{AccountOwner, WithContractAbi},
     views::{RootView, View, ViewStorageContext},
     Contract, ContractRuntime,
 };
