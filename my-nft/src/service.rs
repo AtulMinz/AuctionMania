@@ -2,32 +2,32 @@
 
 mod state;
 
-use self::state::Application;
+use self::state::NonFungibleToken;
 use linera_sdk::{
     base::WithServiceAbi,
     views::{View, ViewStorageContext},
     Service, ServiceRuntime,
 };
 
-pub struct ApplicationService {
-    state: Application,
+pub struct NonFungibleTokenService {
+    state: NonFungibleToken,
     runtime: ServiceRuntime<Self>,
 }
 
-linera_sdk::service!(ApplicationService);
+linera_sdk::service!(NonFungibleTokenService);
 
-impl WithServiceAbi for ApplicationService {
-    type Abi = my_nft::ApplicationAbi;
+impl WithServiceAbi for NonFungibleTokenService {
+    type Abi = my_nft::NonFungibleTokenAbi;
 }
 
-impl Service for ApplicationService {
+impl Service for NonFungibleTokenService {
     type Parameters = ();
 
     async fn new(runtime: ServiceRuntime<Self>) -> Self {
-        let state = Application::load(ViewStorageContext::from(runtime.key_value_store()))
+        let state = NonFungibleToken::load(ViewStorageContext::from(runtime.key_value_store()))
             .await
             .expect("Failed to load state");
-        ApplicationService { state, runtime }
+        NonFungibleTokenService { state, runtime }
     }
 
     async fn handle_query(&self, _query: Self::Query) -> Self::QueryResponse {

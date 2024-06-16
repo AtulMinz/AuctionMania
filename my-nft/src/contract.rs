@@ -8,17 +8,17 @@ use linera_sdk::{
     Contract, ContractRuntime,
 };
 
-use self::state::Application;
+use self::state::NonFungibleToken;
 
 pub struct ApplicationContract {
-    state: Application,
+    state: NonFungibleToken,
     runtime: ContractRuntime<Self>,
 }
 
 linera_sdk::contract!(ApplicationContract);
 
 impl WithContractAbi for ApplicationContract {
-    type Abi = my_nft::ApplicationAbi;
+    type Abi = my_nft::NonFungibleTokenAbi;
 }
 
 impl Contract for ApplicationContract {
@@ -27,7 +27,7 @@ impl Contract for ApplicationContract {
     type InstantiationArgument = ();
 
     async fn load(runtime: ContractRuntime<Self>) -> Self {
-        let state = Application::load(ViewStorageContext::from(runtime.key_value_store()))
+        let state = NonFungibleToken::load(ViewStorageContext::from(runtime.key_value_store()))
             .await
             .expect("Failed to load state");
         ApplicationContract { state, runtime }

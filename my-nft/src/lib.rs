@@ -1,13 +1,13 @@
 use linera_sdk::base::{ContractAbi, ServiceAbi};
 
-pub struct ApplicationAbi;
+pub struct NonFungibleTokenAbi;
 
-impl ContractAbi for ApplicationAbi {
+impl ContractAbi for NonFungibleTokenAbi {
     type Operation = ();
     type Response = ();
 }
 
-impl ServiceAbi for ApplicationAbi {
+impl ServiceAbi for NonFungibleTokenAbi {
     type Query = ();
     type QueryResponse = ();
 }
