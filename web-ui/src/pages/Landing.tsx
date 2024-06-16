@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 
 const Landing = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   return (
     <main className="relative w-full h-screen">
       <img
@@ -18,7 +18,7 @@ const Landing = () => {
           <Button className="z-10">About</Button>
           <Button
             className="z-10 bg-red-500"
-            // onClick={() => navigate("/login")}
+            onClick={() => navigate("/login")}
           >
             Get Started
           </Button>
